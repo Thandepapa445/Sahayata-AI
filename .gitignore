@@ -1,0 +1,124 @@
+# ==============================================================================
+# SAHAYATA AI (सहायता AI) — .gitignore
+# ==============================================================================
+
+# --- Environment Variables & Secrets (CRITICAL) ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.id_rsa
+*.id_ed25519
+*.token
+credentials.json
+client_secret*.json
+
+# --- Python & Virtual Environments ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+bin/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# --- Datasets & Media (DO NOT COMMIT RAW DATA) ---
+data/raw/
+data/processed/
+data/landmarks/
+data/interim/
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+*.npy
+*.npz
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.tar
+*.tar.gz
+*.zip
+*.7z
+
+# Keep data directory structure with README
+!data/
+!data/README.md
+
+# --- Machine Learning Model Artifacts (DO NOT COMMIT LARGE WEIGHTS) ---
+models/*.pth
+models/*.pt
+models/*.onnx
+models/*.bin
+models/*.tflite
+models/*.safetensors
+models/*.ckpt
+models/*.pkl
+models/*.joblib
+*.weights
+
+# Keep models directory structure with README
+!models/
+!models/README.md
+
+# --- Frontend (Node / Vite / React) ---
+frontend/node_modules/
+node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.turbo/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm
+
+# --- High-Performance Compute (DGX A100 / Slurm / Cluster logs) ---
+*.slurm
+*.sbatch
+slurm-*.out
+slurm-*.err
+*.wandb
+wandb/
+.dgx/
+.dgx_auth*
+
+# --- Operating System & IDE Files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+!.vscode/settings.json.example
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*~
