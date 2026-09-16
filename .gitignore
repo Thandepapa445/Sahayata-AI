@@ -14,6 +14,10 @@
 credentials.json
 client_secret*.json
 
+# Local Blueprint & Internal Notes (Keep off public GitHub)
+SAHAYATA-AI_Project_Blueprint/
+
+
 # --- Python & Virtual Environments ---
 __pycache__/
 *.py[cod]
