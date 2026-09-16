@@ -23,3 +23,15 @@ def test_health_endpoint():
     assert data["app_name"] == "SAHAYATA AI"
     assert "uptime_seconds" in data
     assert "device" in data
+
+
+def test_websocket_ping_endpoint():
+    """Verify WebSocket /ws/ping endpoint establishes connection, echoes ping, and responds with server status."""
+    with client.websocket_connect("/ws/ping") as websocket:
+        test_payload = {"timestamp": 1726530000000}
+        websocket.send_json(test_payload)
+        response = websocket.receive_json()
+        assert response["type"] == "pong"
+        assert response["client_timestamp"] == 1726530000000
+        assert response["server_status"] == "connected"
+

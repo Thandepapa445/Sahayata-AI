@@ -18,7 +18,7 @@ By uniting real-time computer vision, Indian Sign Language (ISL) recognition, tw
 1. **Indian Sign Language (ISL) Assistant**
    * Real-time webcam capture $\rightarrow$ MediaPipe landmark extraction (hands + pose context).
    * Landmark normalization (wrist-origin centering, scale invariance).
-   * Temporal sequence classification (sliding window over 30 frames) for a controlled vocabulary of 16 high-utility ISL signs.
+   * Temporal sequence classification (provisional 30-frame sliding window target) for a planned vocabulary of 16 high-utility ISL signs (subject to Phase 2 dataset audit).
    * Debouncing state machine and prediction smoothing $\rightarrow$ synthesized speech output (TTS).
 
 2. **Two-Way Conversational Interface**
@@ -28,7 +28,7 @@ By uniting real-time computer vision, Indian Sign Language (ISL) recognition, tw
 
 3. **Vision & Environment Assistant**
    * On-demand OCR for signs, medicine packaging, notices, and documents.
-   * Lightweight object detection (YOLOv8-nano) with contextual spatial cues (*"Obstacle on your left"*).
+   * Lightweight object detection with contextual spatial cues (*"Obstacle on your left"*); specific detector model and licensing under evaluation.
    * Audio readout of recognized content.
 
 ---
@@ -157,3 +157,17 @@ npm run dev
 
 * **Assistive Technology Prototype:** SAHAYATA AI is developed as an educational, assistive technology prototype. It is **not** a certified medical device and must not be used for life-critical emergency communication or medical navigation.
 * **Privacy-First Processing:** Camera and microphone streams are processed locally or in memory; no user imagery or speech recordings are stored silently.
+
+---
+
+## 📜 Intellectual Property & Third-Party Licensing
+
+* **Project Source Code:** The application codebase developed by Team SAHAYATA AI (backend, frontend, integration logic) is released under the [MIT License](LICENSE).
+* **Third-Party Frameworks & Models:**
+  * **MediaPipe:** Licensed by Google under [Apache-2.0](https://github.com/google-ai-edge/mediapipe/blob/master/LICENSE).
+  * **Whisper / Faster-Whisper:** Licensed under [MIT](https://github.com/SYSTRAN/faster-whisper/blob/master/LICENSE).
+  * **Vision Object Detector:** Ultralytics YOLOv8 is under [AGPL-3.0](https://github.com/ultralytics/ultralytics/blob/main/LICENSE). The team has flagged this architectural decision for review in Phase 5 to consider Apache-2.0 alternatives (e.g. MobileNet-SSD or YOLOv10) to prevent licensing incompatibilities.
+* **External Datasets:**
+  * **INCLUDE Dataset:** Sridhar et al. (ACM MM 2020) — Distributed on Zenodo under CC BY 4.0; code under MIT.
+  * **ISL-CSLTR Dataset:** R. Elakkiya & B. Natarajan (2021) — Distributed on Mendeley Data under CC BY 4.0.
+* **Internally Recorded Data:** Any self-recorded gesture data is proprietary to the project participants until ownership, participant consent, facial privacy, and redistribution terms are formally established. Raw video footage will not be published without verified anonymization and explicit consent.

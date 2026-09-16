@@ -13,16 +13,19 @@ This workspace is dedicated to dataset analysis, MediaPipe feature engineering, 
 
 ---
 
-## 📐 Landmark Data Contract & Tensor Shapes
+## 📐 Provisional Landmark Contract & Tensor Shapes (Design Proposal)
 
-Each sequence represents **1.0 second** of gesture video sampled at **30 FPS**:
-* **Temporal Length ($T$):** 30 frames
-* **Features per frame ($F$):**
+> [!NOTE]
+> **Provisional Working Proposal:**
+> The following feature dimensions and temporal parameters represent our initial design baseline. The actual number of landmarks, visibility confidence inclusion $(x, y, z, v)$, and FPS normalization will be tested and benchmarked during Phase 2.
+
+* **Target Temporal Window ($T$):** Nominal 30 frames (~1.0 second at 30 FPS)
+* **Proposed Features per frame ($F$):**
   * Left Hand: 21 landmarks $\times 3$ $(x, y, z) = 63$ values
   * Right Hand: 21 landmarks $\times 3$ $(x, y, z) = 63$ values
-  * Upper Body Pose: 8 landmarks $\times 3$ $(x, y, z) = 24$ values
-  * **Total:** 150 numerical values per frame
-* **Tensor Shape:** `(N, 30, 150)` where $N$ is the number of samples.
+  * Upper Body Pose Context: 8 landmarks $\times 3$ $(x, y, z) = 24$ values
+  * **Proposed Total:** 150 numerical coordinates per frame
+* **Target Tensor Shape:** `(N, 30, 150)` where $N$ is the batch sample count.
 
 ### Normalization Mathematics
 Before saving sequences, apply:

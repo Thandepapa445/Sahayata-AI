@@ -47,17 +47,17 @@ SAHAYATA AI is built upon a modular, decoupled architecture where presentation, 
 
 ## Data Flow Specifications
 
-### 1. Indian Sign Language (ISL) Pipeline
-1. **Video Ingestion:** Browser captures webcam video at 30 FPS.
-2. **Landmark Extraction:** MediaPipe Holistic/Hands extracts 21 coordinates for Left Hand, 21 for Right Hand, and key upper-body landmarks (shoulders, elbows).
+### 1. Indian Sign Language (ISL) Pipeline (Provisional Design Specification)
+1. **Video Ingestion:** Browser captures webcam video at a nominal target of 30 FPS.
+2. **Landmark Extraction:** MediaPipe Holistic/Hands proposed to extract 21 coordinates for Left Hand, 21 for Right Hand, and key upper-body landmarks (shoulders, elbows).
 3. **Feature Normalization:**
-   * Hand coordinates are re-centered with the wrist set as origin $(0, 0, 0)$.
+   * Hand coordinates re-centered with the wrist set as origin $(0, 0, 0)$.
    * Scaled by palm distance (wrist to middle MCP joint).
-4. **Temporal Buffer:** A FIFO queue holds the last 30 frames (representing 1.0 second of gesture dynamics).
-5. **Model Inference:** Sequence tensor of shape `(1, 30, 150)` passed through the trained temporal model.
+4. **Temporal Buffer:** A proposed FIFO queue holding 30 frames (representing ~1.0 second of gesture dynamics).
+5. **Model Inference:** Provisional sequence tensor of shape `(1, 30, 150)` passed through the trained temporal model (dimensions and visibility channels to be empirically validated).
 6. **State Machine & Debounce:**
-   * Candidate prediction must exceed confidence threshold ($\ge 0.80$).
-   * Must persist for $K=10$ consecutive frames to prevent jitter.
+   * Target threshold: Candidate prediction proposed to exceed confidence threshold ($\ge 0.80$).
+   * Persistence buffer: Proposed $K=10$ consecutive frames to mitigate transient jitter.
    * Emitted to sentence builder $\rightarrow$ spoken via TTS.
 
 ### 2. Conversational Pipeline
